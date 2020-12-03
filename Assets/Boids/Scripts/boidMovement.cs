@@ -10,12 +10,12 @@ public class boidMovement : MonoBehaviour
     private static List<GameObject> otherBoids;
     private static List<boidMovement> otherBoidScripts;
     
-    public Vector3 target;
-    public float targetWeight;
+    
     private Transform bounds;
     
+    public Vector3 target;
+    public float targetWeight;
     public float avoidWeight;
-    
     public float matchWeight;
     [Range(1, 150)]
     public float maxSpeed;
@@ -26,7 +26,6 @@ public class boidMovement : MonoBehaviour
     [Range(0, 1)]
     public float viewAngle;
 
-    public bool drawRays;
     
     const int numRaycasts = 10;
 
@@ -36,7 +35,6 @@ public class boidMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //System.Random r = new System.Random();
         Velocity = transform.forward * 5;
         bounds = transform.parent.GetChild(0);
         avoidWeight /= 200;
@@ -119,10 +117,6 @@ public class boidMovement : MonoBehaviour
                 }
             }
         }
-        //if (avoidVector == Vector3.zero)
-        //{
-        	//return Vector3.MoveTowards(transform.forward, transform.right, 0.01f);
-        //}
 
         avoidVector = avoidVector * avoidWeight;
         matchVector = matchVector * matchWeight;
